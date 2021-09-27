@@ -10,10 +10,10 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   // mode: 'history',
   routes: [
-    {
-      path: '/',
-      redirect: '/login'
-    },
+    // {
+    //   path: '/',
+    //   redirect: '/login'
+    // },
     {
       path: '/login',
       name: 'Login',
@@ -33,11 +33,12 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   if (to.meta.isAuth) {
     const { token } = store.state
+    console.log(token)
     if (token) {
       next()
     } else {
       next({
-        name: 'login'
+        name: 'Login'
       })
     }
   } else {

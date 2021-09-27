@@ -16,8 +16,9 @@ const store = new Vuex.Store({
   },
   actions: {
     async login ({ commit }, payload) {
-      const { token } = await apiLogin(payload)
-      commit('login', token)
+      const res = await apiLogin(payload)
+      console.log(55, res)
+      commit('login', res.data.token)
     }
   }
 })
